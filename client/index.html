@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Collaborative Canvas</title>
+  <meta name="viewport" content="width=950" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="toolbar">
+    <div id="usersOnline" aria-label="Online users"></div>
+    
+    <div class="color-picker-group" aria-label="Color palette">
+      <input type="color" id="colorPicker" value="#4287f5" title="Brush Color" />
+      <div id="colorPresets"></div>
+    </div>
+
+    <div class="stroke-picker" aria-label="Stroke size">
+      <input type="range" id="strokeWidth" min="2" max="18" value="4" title="Brush Size" />
+      <div id="strokePreview"></div>
+    </div>
+
+    <button class="tool active" id="brush" aria-label="Brush tool" title="Brush Tool (B)">
+      <svg width="24" height="24" fill="none" stroke="#355ac1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 22l4-4 8-8 4-4 4 4-4 4-8 8-4 4Z"/>
+      </svg>
+    </button>
+    <button class="tool" id="eraser" aria-label="Eraser tool" title="Eraser Tool (E)">
+      <svg width="24" height="24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 21H3v-4l15-15 4 4-15 15z"/>
+        <path d="M18 6l-3-3"/>
+      </svg>
+    </button>
+    <button id="undo" title="Undo (Ctrl+Z)">↶</button>
+    <button id="redo" title="Redo (Ctrl+Y)">↷</button>
+
+    <span id="usernameDisplay" aria-live="polite" style="margin-left: 12px; font-weight:600; color:#555;"></span>
+  </div>
+
+  <div id="canvas-container" aria-label="Drawing canvas">
+    <canvas id="canvas" width="900" height="600" tabindex="0"></canvas>
+    <div id="cursor-overlay" aria-hidden="true"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="websocket.js"></script>
+  <script src="main.js"></script>
+  <script src="canvas.js"></script>
+</body>
+</html>
