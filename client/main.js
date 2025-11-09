@@ -2,10 +2,7 @@ const username = 'User' + Math.floor(Math.random() * 9999);
 const usernameDisplay = document.getElementById('usernameDisplay');
 usernameDisplay.textContent = "You: " + username;
 
-// Join server and assign name
 window.websocketAPI.join(username);
-
-// Show online users with color bubbles
 window.websocketAPI.on('user_list', (users, colorMap) => {
   const usersDiv = document.getElementById('usersOnline');
   usersDiv.innerHTML = '';
@@ -19,7 +16,6 @@ window.websocketAPI.on('user_list', (users, colorMap) => {
   });
 });
 
-// Color preset buttons setup
 const presets = ["#4287f5", "#e74c3c", "#2ecc71", "#f39c12", "#9b59b6", "#34495e", "#d35400", "#16a085"];
 const presetsDiv = document.getElementById('colorPresets');
 presets.forEach(c => {

@@ -8,7 +8,6 @@ let drawing = false, path = [];
 let cursors = {};
 let isEraser = false;
 
-// UI handlers
 document.getElementById('colorPicker').oninput = e => {
   color = e.target.value;
   tool = 'brush'; 
@@ -49,8 +48,6 @@ function updateStrokePreview() {
 }
 
 updateStrokePreview();
-
-// Coordinate translation
 function relPos(e) {
   const rect = canvas.getBoundingClientRect();
   return {
@@ -58,8 +55,6 @@ function relPos(e) {
     y: (e.clientY - rect.top) * canvas.height / rect.height
   };
 }
-
-// Pointer events
 canvas.onpointerdown = (e) => {
   drawing = true;
   path = [];
@@ -118,15 +113,12 @@ function replayOps(ops) {
   }
 }
 
-// Draw on receiving others' draw events
 window.websocketAPI.on('draw', data => {
   drawSegment(data.path[0], data.path[1], data.color, data.width);
 });
 
 window.websocketAPI.on('initial_state', replayOps);
 window.websocketAPI.on('restore_state', replayOps);
-
-// Cursor handling
 function sendCursor(e) {
   const { x, y } = relPos(e);
   window.websocketAPI.cursor({ x, y, color: getDrawColor() });
