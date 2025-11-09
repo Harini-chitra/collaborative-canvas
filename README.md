@@ -34,7 +34,7 @@ Live demo deployed on Railway:
 ## Setup Instructions
 
 1. Clone the repository  
-git clone https://github.com/your-username/collaborative-canvas.git
+https://github.com/Harini-chitra/collaborative-canvas
 cd collaborative-canvas
 2. Install dependencies
 npm install
@@ -68,3 +68,4 @@ Approximately 12-15 hours developing, testing, and deploying, including UI polis
 ## License
 
 MIT License. Feel free to use and enhance!
+
